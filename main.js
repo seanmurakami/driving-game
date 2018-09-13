@@ -1,3 +1,5 @@
+let intervalID;
+
 class Car {
   constructor ($img, speed, direction, location) {
     this.$img = $img
@@ -13,20 +15,20 @@ class Car {
   move() {
     if (this.direction === 'north') {
       this.location[1] += this.speed
-      this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(4*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(4*this.speed) + 'em')
     }
     if (this.direction === 'south') {
       this.location[1] -= this.speed
-      this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(4*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(4*this.speed) + 'em')
     }
     if (this.direction === 'east') {
       this.location[0] += this.speed
-      this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(4*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(4*this.speed) + 'em')
     }
     if (this.direction === 'west') {
       this.location[0] -= this.speed
-      this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(4*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(4*this.speed) + 'em')
     }
+    this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(1.2*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(1.2*this.speed) + 'em')
+  }
+  start() {
+    setInterval(this.move.bind(this), 16)
   }
 }
 
@@ -34,7 +36,7 @@ var $image = document.createElement('img')
 $image.setAttribute('src', 'https://opengameart.org/sites/default/files/simple-travel-car-top_view.svg')
 document.body.appendChild($image)
 
-var car1 = new Car($image, 1, 'north', [0, 0])
+var car1 = new Car($image, 1, 'west', [0, 0])
 
 document.addEventListener('keydown', function (e) {
   if (e.keyCode === 38) {
@@ -52,5 +54,11 @@ document.addEventListener('keydown', function (e) {
   if (e.keyCode === 39) {
     car1.turn('east')
     car1.move()
+  }
+})
+
+document.addEventListener('keydown', function (e) {
+  if (e.keyCode === 32) {
+    car1.start()
   }
 })
