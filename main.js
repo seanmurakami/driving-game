@@ -1,5 +1,3 @@
-let intervalID;
-
 class Car {
   constructor ($img, speed, direction, location) {
     this.$img = $img
@@ -25,7 +23,7 @@ class Car {
     if (this.direction === 'west') {
       this.location[0] -= this.speed
     }
-    this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1]) + 'em; left: ' + Math.abs(this.location[0]) + 'em')
+    this.$img.setAttribute('style', 'top: ' + Math.abs(this.location[1]) + 'em; left: ' + Math.abs(this.location[0]) + 'em')
   }
   start() {
     setInterval(this.move.bind(this), 16)
@@ -41,19 +39,15 @@ var car1 = new Car($image, 1, 'west', [0, 0])
 document.addEventListener('keydown', function (e) {
   if (e.keyCode === 38) {
     car1.turn('north')
-    car1.move()
   }
   if (e.keyCode === 40) {
     car1.turn('south')
-    car1.move()
   }
   if (e.keyCode === 37) {
     car1.turn('west')
-    car1.move()
   }
   if (e.keyCode === 39) {
     car1.turn('east')
-    car1.move()
   }
 })
 
