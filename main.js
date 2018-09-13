@@ -25,7 +25,7 @@ class Car {
     if (this.direction === 'west') {
       this.location[0] -= this.speed
     }
-    this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1])*(1.2*this.speed) + 'em; left: ' + Math.abs(this.location[0])*(1.2*this.speed) + 'em')
+    this.$img.setAttribute('style', 'position: absolute; top: ' + Math.abs(this.location[1]) + 'em; left: ' + Math.abs(this.location[0]) + 'em')
   }
   start() {
     setInterval(this.move.bind(this), 16)
