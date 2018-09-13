@@ -24,11 +24,9 @@ document.addEventListener('keydown', function (e) {
   }
   if (e.keyCode == '40') {
     car1.turn('south')
-
   }
   if (e.keyCode == '37') {
     car1.turn('west')
-
   }
   if (e.keyCode == '39') {
     car1.turn('east')
