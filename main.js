@@ -8,7 +8,7 @@ class Car {
 }
 
 var $image = document.createElement('img')
-$image.setAttribute('src', 'https://www.tesla.com/tesla_theme/assets/img/compare/model_s--side_profile.png?20170524')
+$image.setAttribute('src', 'https://images.fastcompany.com/upload/tesla-model-s-top-down.jpg')
 document.body.appendChild($image)
 
 var car1 = new Car($image, 1, 'north', [0, 0])
