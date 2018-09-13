@@ -8,7 +8,7 @@ class Car {
 }
 
 var $image = document.createElement('img')
-$image.setAttribute('src', 'https://images.fastcompany.com/upload/tesla-model-s-top-down.jpg')
+$image.setAttribute('src', 'https://opengameart.org/sites/default/files/simple-travel-car-top_view.svg')
 document.body.appendChild($image)
 
 var car1 = new Car($image, 1, 'north', [0, 0])
