@@ -1,5 +1,7 @@
+let intervalID;
+
 class Car {
-  constructor ($img, speed, direction, location) {
+  constructor($img, speed, direction, location) {
     this.$img = $img
     this.speed = speed
     this.direction = direction
@@ -26,7 +28,10 @@ class Car {
     this.$img.setAttribute('style', 'top: ' + Math.abs(this.location[1]) + 'em; left: ' + Math.abs(this.location[0]) + 'em')
   }
   start() {
-    setInterval(this.move.bind(this), 16)
+    intervalID = setInterval(this.move.bind(this), 16)
+  }
+  stop() {
+    clearInterval(intervalID)
   }
 }
 
@@ -52,7 +57,14 @@ document.addEventListener('keydown', function (e) {
 })
 
 document.addEventListener('keydown', function (e) {
+  let $lookup = document.querySelector('body')
   if (e.keyCode === 32) {
-    car1.start()
+    $lookup.classList.toggle('on')
+    if ($lookup.getAttribute('class') === 'on') {
+      car1.start()
+    }
+    else {
+      car1.stop()
+    }
   }
 })
