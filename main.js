@@ -34,7 +34,7 @@ var $image = document.createElement('img')
 $image.setAttribute('src', 'https://opengameart.org/sites/default/files/simple-travel-car-top_view.svg')
 document.body.appendChild($image)
 
-var car1 = new Car($image, 1, 'west', [0, 0])
+var car1 = new Car($image, 1, 'east', [0, 0])
 
 document.addEventListener('keydown', function (e) {
   if (e.keyCode === 38) {
