@@ -1,5 +1,5 @@
 class Car {
-  constructor ($img, speed, direction, location) {
+  constructor($img, speed, direction, location) {
     this.$img = $img
     this.speed = speed
     this.direction = direction
@@ -26,7 +26,11 @@ class Car {
     this.$img.setAttribute('style', 'top: ' + Math.abs(this.location[1]) + 'em; left: ' + Math.abs(this.location[0]) + 'em')
   }
   start() {
-    setInterval(this.move.bind(this), 16)
+    this.startCar = setInterval(this.move.bind(this), 16)
+  }
+  stop() {
+    clearInterval(this.startCar)
+    this.startCar = null
   }
 }
 
@@ -53,6 +57,11 @@ document.addEventListener('keydown', function (e) {
 
 document.addEventListener('keydown', function (e) {
   if (e.keyCode === 32) {
-    car1.start()
+    if (!car1.startCar) {
+      car1.start()
+    }
+    else {
+      car1.stop()
+    }
   }
 })
