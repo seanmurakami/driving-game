@@ -30,6 +30,7 @@ class Car {
   }
   stop() {
     clearInterval(this.startCar)
+    this.startCar = null
   }
 }
 
@@ -55,10 +56,8 @@ document.addEventListener('keydown', function (e) {
 })
 
 document.addEventListener('keydown', function (e) {
-  let $lookup = document.querySelector('body')
   if (e.keyCode === 32) {
-    $lookup.classList.toggle('on')
-    if ($lookup.getAttribute('class') === 'on') {
+    if (!car1.startCar) {
       car1.start()
     }
     else {
